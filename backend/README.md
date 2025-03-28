@@ -6,8 +6,8 @@ This is a machine learning service that predicts weather conditions based on inp
 ## Features
 
 - Machine Learning model built with scikit-learn
+- Uses real-world weather data from NOAA GSOD dataset
 - FastAPI backend for predictions
-- Synthetic data generation for model training
 - 5-day weather forecast generation
 
 ## Getting Started
@@ -24,12 +24,17 @@ This is a machine learning service that predicts weather conditions based on inp
    pip install -r requirements.txt
    ```
 
-2. Train the model:
+2. Download and process the dataset:
+   ```
+   python dataset_loader.py
+   ```
+
+3. Train the model:
    ```
    python weather_model.py
    ```
 
-3. Start the API server:
+4. Start the API server:
    ```
    uvicorn main:app --reload
    ```
@@ -44,6 +49,10 @@ You can also run the service using Docker:
 docker build -t weather-prediction .
 docker run -p 8000:8000 weather-prediction
 ```
+
+## Dataset
+
+The model uses the NOAA Global Surface Summary of the Day (GSOD) dataset, which contains historical weather data from weather stations around the world. The data is processed to extract relevant features like temperature, humidity, pressure, wind speed, and precipitation.
 
 ## API Endpoints
 
@@ -69,3 +78,4 @@ response = requests.post(url, json=data)
 prediction = response.json()
 print(prediction)
 ```
+
