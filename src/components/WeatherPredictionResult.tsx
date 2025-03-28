@@ -1,6 +1,6 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Cloud, CloudDrizzle, CloudRain, Cloudy, CloudFog, CloudLightning, CloudSnow, Sun } from "lucide-react";
+import { Cloud, CloudDrizzle, CloudRain, Cloud as Cloudy, CloudFog, CloudLightning, CloudSnow, Sun } from "lucide-react";
 import { useState, useEffect } from "react";
 
 export type PredictionResult = {
@@ -31,7 +31,10 @@ const WeatherIcon = ({ type }: { type: string }) => {
     case "cloudy":
       return <Cloud className="h-10 w-10 text-gray-400" />;
     case "partly cloudy":
-      return <CloudSun className="h-10 w-10 text-blue-400" />;
+      return <div className="relative h-10 w-10">
+        <Sun className="h-10 w-10 text-yellow-400 absolute" />
+        <Cloud className="h-7 w-7 text-blue-400 absolute bottom-0 right-0" />
+      </div>;
     case "rainy":
       return <CloudRain className="h-10 w-10 text-blue-500" />;
     case "drizzle":
